@@ -10,8 +10,8 @@ Material for MkDocs是[MkDocs][1]的一个主题，[MkDocs][1]是一个用于生
 安装过程中遇到问题，请查阅[故障排除][4]部分。
 
   [1]: https://www.mkdocs.org
-  [2]: #with-pip
-  [3]: #with-docker
+  [2]: #pip
+  [3]: #docker
   [4]: troubleshooting.md
 
 ## 安装

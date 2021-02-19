@@ -26,9 +26,11 @@ site_description: >-
   根据一组Markdown文件创建品牌静态网站，以托管开源或商业项目的文档-支持自定义、搜索、对移动设备友好，支持40多种语言
 
 # Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
-edit_uri: ""
+# repo_name: squidfunk/mkdocs-material
+# repo_url: https://github.com/squidfunk/mkdocs-material
+# edit_uri: ""
+repo_name: zimocode/mkdocs-material-zh
+repo_url: https://github.com/zimocode/mkdocs-material-zh
 
 # Copyright
 copyright: Copyright &copy; 2016 - 2021 Martin Donath
@@ -187,6 +189,8 @@ nav:
     - Guides:
       - Upgrading: upgrading.md
       - Deprecations: deprecations.md
+  - 译注: 
+    - 译注: note.md
 
 # Google Analytics
 google_analytics:

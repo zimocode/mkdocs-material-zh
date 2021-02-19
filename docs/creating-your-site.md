@@ -2,17 +2,15 @@
 template: overrides/main.html
 ---
 
-# Creating your site
+# 新建网站
 
-After you've [installed][1] Material for MkDocs, you can bootstrap your project 
-documentation using the `mkdocs` executable. Go to the directory where you want
-your project to be located and enter:
+在完成[Material for MkDocs的安装][1]后，可以使用`mkdocs`相关命令来启动文档。转到要放置项目的目录，然后输入：
 
 ```
 mkdocs new .
 ```
 
-Alternatively, if you're running Material for MkDocs from within Docker, use:
+如果你正在使用的是Docker中的Material for MkDocs，则使用以下命令：
 
 === "Unix"
 
@@ -26,7 +24,7 @@ Alternatively, if you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -v "%cd%":/docs squidfunk/mkdocs-material new .
     ```
 
-This will create the following structure:
+以上操作会新建以下结构的文件：
 
 ```
 .
@@ -37,13 +35,11 @@ This will create the following structure:
 
   [1]: getting-started.md
 
-## Configuration
+## 配置
 
-### Minimal configuration
+### 最小配置
 
-Simply add the following lines to `mkdocs.yml` to enable the theme. Note that
-since there are several [installation methods][2], configuration might be
-slightly different:
+只需要简单的添加以下几行内容到`mkdocs.yml`即可启用主题。请注意，由于有几种不同的[安装][2]方法，因此配置可能会略有不同：
 
 === "pip, docker"
 
@@ -77,34 +73,30 @@ slightly different:
         logo: logo
     ```
 
-_If you cloned Material for MkDocs from GitHub, you must list all of the themes'
-defaults, because_ [`mkdocs_theme.yml`][3] _is not loaded automatically as
-[described in the official documentation][4]._
+_如果是从GitHub克隆的MkDocs from GitHub，那么应当列出所有主题的默认项，因为[`mkdocs_theme.yml`][3]不会作为[官方的描述文件][4]被自动载入_
 
-  [2]: getting-started.md#installation
+  [2]: getting-started.md/#_2
   [3]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
   [4]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
-### Advanced configuration
+### 高级设置
 
-Material for MkDocs comes with many configuration options. The _setup_ section
-explains in great detail how to configure and customize colors, fonts, icons
-and much more:
+Material for MkDocs包含许多可配置项，_设置_章节有如何设置或者自定义颜色、字体、图标等等的详细说明。
 
 <div class="tx-columns" markdown="1">
 
-- [Changing the colors][5]
-- [Changing the fonts][6]
-- [Changing the language][7]
-- [Changing the logo and icons][8]
-- [Setting up navigation][9]
-- [Setting up site search][10]
-- [Setting up site analytics][11]
-- [Setting up versioning][12]
-- [Setting up the header][13]
-- [Setting up the footer][14]
-- [Adding a git repository][15]
-- [Adding a comment system][16]
+- [修改颜色][5]
+- [修改字体][6]
+- [修改语言][7]
+- [修改logo图片和icon图标][8]
+- [设置导航][9]
+- [设置站内搜索][10]
+- [设置访问统计][11]
+- [设置versioning][12]
+- [设置头部(header)][13]
+- [设置底部(footer)][14]
+- [添加Github库(repository)][15]
+- [添加评论系统][16]
 
 </div>
 
@@ -121,17 +113,15 @@ and much more:
   [15]: setup/adding-a-git-repository.md
   [16]: setup/adding-a-comment-system.md
 
-## Previewing as you write
+## 预览
 
-MkDocs includes a live preview server, so you can preview your changes as you
-write your documentation. The server will automatically rebuild the site upon
-saving. Start it with:
+MkDocs包含一个试试预览的服务，所有可以在撰写文档的过程中进行实时预览。当文档修改保存后，这个服务会自动重建整个网站的文档。使用以下命令启动：
 
 ```
 mkdocs serve
 ```
 
-If you're running Material for MkDocs from within Docker, use:
+如果使用的是Docker中的Material for MkDocs，则使用以下命令：
 
 === "Unix"
 
@@ -145,26 +135,22 @@ If you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -p 8000:8000 -v "%cd%":/docs squidfunk/mkdocs-material
     ```
 
-Point your browser to [localhost:8000][17] and you should see:
+浏览器打开[localhost:8000][17]，应该就能看到类似下图所示的内容：
 
 [![Creating your site][18]][18]
 
   [17]: http://localhost:8000
   [18]: assets/screenshots/creating-your-site.png
 
-## Building your site
+## 生成网站
 
-When you're finished editing, you can build a static site from your Markdown
-files with:
+当文档编辑完成后，可以通过以下命令将所有的Markdown文件生成一个静态网站：
 
 ```
 mkdocs build
 ```
 
-The contents of this directory make up your project documentation. There's no
-need for operating a database or server, as it is completely self-contained.
-The site can be hosted on [GitHub Pages][19], [GitLab Pages][20], a CDN of your
-choice or your private web space.
+该目录中的内容就是项目文档/网站。因为是完全独立的，所以不需要操作数据库或者服务器。生成的网站可以托管在[GitHub Pages][19]、[GitLab Pages][20]、CDN网络或者其它的web服务器上。
 
   [19]: publishing-your-site.md#github-pages
   [20]: publishing-your-site.md#gitlab-pages
