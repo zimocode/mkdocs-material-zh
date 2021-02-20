@@ -2,26 +2,19 @@
 template: overrides/main.html
 ---
 
-# Publishing your site
+# 发布网站
 
-The great thing about hosting project documentation in a `git` repository is
-the ability to deploy it automatically when new changes are pushed. MkDocs
-makes this ridiculously simple.
+将网站托管在`git`库中的最大好处是能够在推送新更改时自动部署它。MkDocs使得这一操作更加简单。
 
-## GitHub Pages
+## GitHub Pages 
 
-If you're already hosting your code on GitHub, [GitHub Pages][1] is certainly
-the most convenient way to publish your project documentation. It's free of
-charge and pretty easy to set up.
+如果已经在GitHub上托管代码，那么使用[GitHub Pages][1]来发布网站再方便不过了。
 
   [1]: https://pages.github.com/
 
-### with GitHub Actions
+### 使用GitHub Actions
 
-Using [GitHub Actions][2] you can automate the deployment of your project
-documentation. At the root of your repository, create a new GitHub Actions
-workflow, e.g. `.github/workflows/ci.yml`, and copy and paste the following
-contents:
+使用[GitHub Actions][2]可以自动部署网站。在库的根目录下新建一个GitHub Actions workflow，比如：`.github/workflows/ci.yml`，并粘贴入以下内容：
 
 === "Material for MkDocs"
 
@@ -44,7 +37,7 @@ contents:
           - run: mkdocs gh-deploy --force
     ```
 
-=== "Insiders"
+=== "内测版本"
 
     ``` yaml
     name: ci
@@ -68,25 +61,20 @@ contents:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     ```
 
-Now, when a new commit is pushed to either the `master` or `main` branches,
-the static site is automatically built and deployed. Push your changes to see
-the workflow in action.
+此时，当一个新的提交推送到`master`或`main`时，我们的静态网站的内容将自动生成并完成部署。可以尝试推送一个提交来查看GitHub Actions的工作状况。
 
-Your documentation should shortly appear at `<username>.github.io/<repository>`.
+网站将在不久后部署到`<username>.github.io/<repository>`。
 
-_Remember to set the_ `GH_TOKEN` _environment variable to the value of your
-[personal access token][3] when deploying [Insiders][4], which can be done
-using [secrets][5]._
+_注意，如果是部署的[内测版本][4]，记得在[personal access token][3]中添加`GH_TOKEN`的环境变量值,可以使用[secrets][5]完成操作。_
 
   [2]: https://github.com/features/actions
   [3]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
   [4]: insiders.md
   [5]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
 
-### with MkDocs
+### 使用MkDocs
 
-If you prefer to deploy your project documentation manually, you can just invoke
-the following command from the directory containing the `mkdocs.yml` file:
+如果是倾向于手动部署网站，请在包含`mkdocs.yml`文件的目录中运行以下命令：
 
 ```
 mkdocs gh-deploy --force
@@ -94,10 +82,7 @@ mkdocs gh-deploy --force
 
 ## GitLab Pages
 
-If you're hosting your code on GitLab, deploying to [GitLab Pages][6] can be
-done by using the [GitLab CI][7] task runner. At the root of your repository,
-create a task definition named `.gitlab-ci.yml` and copy and paste the
-following contents:
+如果是将代码托管在GitLab，可以使用[GitLab CI][7]来部署到[GitLab Pages][6]。在库的根目录中，创建一个名为“ .gitlab-ci.yml”的任务定义，然后复制并粘贴以下内容：
 
 === "Material for MkDocs"
 
@@ -115,7 +100,7 @@ following contents:
           - public
     ```
 
-=== "Insiders"
+=== "内测版本"
 
     ``` yaml
     image: python:latest
@@ -131,15 +116,11 @@ following contents:
           - public
     ```
 
-Now, when a new commit is pushed to `master`, the static site is automatically
-built and deployed. Commit and push the file to your repository to see the
-workflow in action.
+此时，当一个新的提交推送到`master`时，静态网站的内容将自动生成并完成部署。提交并推送文件到库就能看到效果了。
 
-Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
+网站将在不久后部署到`<username>.gitlab.io/<repository>`。
 
-_Remember to set the_ `GH_TOKEN` _environment variable to the value of your
-[personal access token][3] when deploying [Insiders][4], which can be done
-using [masked custom variables][8]._
+_注意，如果是部署的[内测版本][4]，记得在[personal access token][3]中添加`GH_TOKEN`的环境变量值,可以使用[masked custom variables][8]完成操作。_
 
   [6]: https://gitlab.com/pages
   [7]: https://docs.gitlab.com/ee/ci/
