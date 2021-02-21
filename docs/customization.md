@@ -2,26 +2,19 @@
 template: overrides/main.html
 ---
 
-# Customization
+# 自定义
 
-Project documentation is as diverse as the projects themselves and Material for
-MkDocs is a great starting point for making it look beautiful. However, as you
-write your documentation, you may reach a point where small adjustments are
-necessary to preserve your brand's style.
+网站与主题一样多种多样，使用Material for MkDocs使得MkDocs变得更漂亮。然而，有时候，可能需要对主题做些许改动才能符合我们自己的需求。
 
-## Adding assets
+## 添加资源文件
 
-[MkDocs][1] provides several ways to customize a theme. In order to make a few
-tweaks to Material for MkDocs, you can just add your stylesheets and JavaScript
-files to the `docs` directory.
+[MkDocs][1]提供了多种方法来自定义一个主题。为了对Material for MkDocs进行一些调整，可以添加css和JavaScript文件到`docs`目录。
 
   [1]: https://www.mkdocs.org
 
-### Additional CSS
+### 添加CSS
 
-If you want to tweak some colors or change the spacing of certain elements,
-you can do this in a separate stylesheet. The easiest way is by creating a
-new stylesheet file in the `docs` directory:
+如果想调整颜色或者一些元素间的距离等，可以通过单独添加CSS样式来实现。最简单的方法是在`docs`目录下添加CSS文件，类似与这种结构：
 
 ``` sh
 .
@@ -31,23 +24,20 @@ new stylesheet file in the `docs` directory:
 └─ mkdocs.yml
 ```
 
-Then, add the following line to `mkdocs.yml`:
+然后在`mkdocs.yml`中添加以下内容：
 
 ``` yaml
 extra_css:
   - stylesheets/extra.css
 ```
 
-Spin up the [live preview server][2] and start typing your changes in your
-additional stylesheet file – you should see them almost instantly after saving.
+运行[预览服务][2]，然后在添加的css文件做些许变动，稍后就能到改动的效果了。
 
-  [2]: creating-your-site.md#previewing-as-you-write
+  [2]: creating-your-site/#_5
 
-### Additional JavaScript
+### 添加JavaScript文件
 
-The same is true for additional JavaScript. If you want to integrate another
-syntax highlighter or add some custom logic to your theme, create a new
-JavaScript file in the `docs` directory:
+与添加CSS文件类似。如果想使用其它的语法高亮或者自定义的一些脚本，在`docs`目录下新建JavaScript文件即可：
 
 ``` sh
 .
@@ -57,30 +47,26 @@ JavaScript file in the `docs` directory:
 └─ mkdocs.yml
 ```
 
-Then, add the following line to `mkdocs.yml`:
+然后，在`mkdocs.yml`文件中添加以下内容：
 
 ``` yaml
 extra_javascript:
   - javascripts/extra.js
 ```
 
-Further assistance can be found in the [MkDocs documentation][3].
+更多内容请查阅[MkDocs documentation][3]。
 
   [3]: https://www.mkdocs.org/user-guide/styling-your-docs/#customizing-a-theme
 
-## Extending the theme
+## 扩展主题
 
-If you want to alter the HTML source (e.g. add or remove some parts), you can
-extend the theme. MkDocs supports [theme extension][4], an easy way to override
-parts of Material for MkDocs without forking from git. This ensures that you
-can update to the latest version more easily.
+如果要更改最终生成的HTML文件的内容（比如：添加或删除部分内容），此时需要扩展主题。MkDocs支持[theme extension][4]，一种覆写部分Material for MkDocs的简易方法，而不需要分叉（forking）git库。此方法确保Material for MkDocs可以简易的升级到最新版。
 
   [4]: https://www.mkdocs.org/user-guide/styling-your-docs/#using-the-theme-custom_dir
 
-### Setup and theme structure
+### 设置
 
-Enable Material for MkDocs as usual in `mkdocs.yml`, and create a new folder
-for `overrides` which you then reference using the `custom_dir` key:
+新建一个`overrides`目录，并在`custom_dir`文件中添加以下内容：
 
 ``` yaml
 theme:
@@ -88,34 +74,29 @@ theme:
   custom_dir: overrides
 ```
 
-!!! warning "Theme extension prerequisites"
+!!! warning "主题扩展先决条件 "
 
-    As the `custom_dir` variable is used for the theme extension process,
-    Material for MkDocs needs to be installed via `pip` and referenced with the
-    `name` parameter in `mkdocs.yml`. It will not work when cloning from `git`.
+    由于`custom_dir`变量是由theme extension进程调用的，所有要求Material for MkDocs是通过`pip`方式完成安装的，且要求`mkdocs.yml`文件中的`name`完成设置。
 
-The structure in the `overrides` directory must mirror the directory structure
-of the original theme, as any file in the `overrides` directory will replace the
-file with the same name which is part of the original theme. Besides, further
-assets may also be put in the `overrides` directory.
+`overrides`目录中的结构必须镜像原始主题的目录结构，因为`overrides`目录中的任何文件都将使用与原始主题相同的名称替换该文件。 此外，也可以将其他资源文件放置在`overrides`目录中。
 
-The directory layout of the theme is as follows:
+主题的目录结构如下：
 
 ``` sh
 .
-├─ .icons/                             # Bundled icon sets
+├─ .icons/                             # 捆绑的图标
 ├─ assets/
-│  ├─ images/                          # Images and icons
+│  ├─ images/                          # 图片和图标
 │  ├─ javascripts/                     # JavaScript
-│  └─ stylesheets/                     # Stylesheets
+│  └─ stylesheets/                     # CSS
 ├─ partials/
-│  ├─ integrations/                    # Third-party integrations
+│  ├─ integrations/                    # 第三方内容
 │  │  ├─ analytics.html                # - Google Analytics
 │  │  └─ disqus.html                   # - Disqus
-│  ├─ languages/                       # Localized languages
+│  ├─ languages/                       # 本地化语言文件
 │  ├─ footer.html                      # Footer bar
 │  ├─ header.html                      # Header bar
-│  ├─ language.html                    # Localized labels
+│  ├─ language.html                    # 本地化标签
 │  ├─ logo.html                        # Logo in header and sidebar
 │  ├─ nav.html                         # Main navigation
 │  ├─ nav-item.html                    # Main navigation item
@@ -134,12 +115,9 @@ The directory layout of the theme is as follows:
 └─ main.html                           # Default page
 ```
 
-### Overriding partials
+### 覆写部分
 
-In order to override a partial, we can replace it with a file of the same name
-and location in the `overrides` directory. For example, to replace the original
-`footer.html`, create a `footer.html` file in the `overrides/partials`
-directory:
+为了覆盖一个部分，可以在`overrides`目录中用相同名称和位置的文件替换它。 例如，要替换原始的`footer.html`，在`overrides/partials`目录中创建一个`footer.html`文件即可：
 
 ``` sh
 .
@@ -148,16 +126,11 @@ directory:
 │     └─ footer.html
 └─ mkdocs.yml
 ```
+MkDocs将在渲染主题时使用新的局部文件。可以使用任何文件来完成。
 
-MkDocs will now use the new partial when rendering the theme. This can be done
-with any file.
+### 覆盖块
 
-### Overriding blocks
-
-Besides overriding partials, it's also possible to override (and extend)
-_template blocks_, which are defined inside the templates and wrap specific
-features. To override a block, create a `main.html` file inside the `overrides`
-directory:
+除了覆盖部分，还可以覆盖（和扩展）在模板内部定义或者包装特定功能的_template blocks_。 要覆盖一个块，在`overrides`目录中创建一个`main.html`文件：
 
 ``` sh
 .
@@ -166,7 +139,7 @@ directory:
 └─ mkdocs.yml
 ```
 
-Then, e.g. to override the site title, add the following line to `main.html`:
+举例说明，如果要覆写页面的标题，则在`main.html`中添加以下内容：
 
 ``` html
 {% extends "base.html" %}
@@ -176,7 +149,7 @@ Then, e.g. to override the site title, add the following line to `main.html`:
 {% endblock %}
 ```
 
-Material for MkDocs provides the following template blocks:
+Material for MkDocs提供了以下的template blocks：
 
 | Block name   | Wrapped contents                                |
 | ------------ | ----------------------------------------------- |
@@ -199,31 +172,27 @@ Material for MkDocs provides the following template blocks:
 | `styles`     | Wraps the stylesheets (also extra sources)      |
 | `tabs`       | Wraps the tabs navigation (if available)        |
 
-For more on this topic refer to the [MkDocs documentation][5].
+更多内容请参考[MkDocs documentation][5]。
 
   [5]: https://www.mkdocs.org/user-guide/styling-your-docs/#overriding-template-blocks
 
-## Theme development
+## 开发扩展
 
-Material for MkDocs uses [Webpack][6] as a build tool to leverage modern web
-technologies like [TypeScript][7] and [SASS][8]. If you want to make more
-fundamental changes, it may be necessary to make the adjustments directly in
-the source of the theme and recompile it.
+Material for MkDocs使用[Webpack][6]作为构建工具来利用[TypeScript][7]和[SASS][8]等现代Web技术。如果要进行更根本的更改，则需要直接在主题源码中进行调整并重新编译。
 
   [6]: https://webpack.js.org/
   [7]: https://www.typescriptlang.org/
   [8]: https://sass-lang.com
 
-### Environment setup
+### 开发环境设置
 
-In order to start development on Material for MkDocs, a [Node.js][9] version of
-at least 12 is required. First, clone the repository:
+Material for MkDocs的开发，要求[Node.js][9]的版本至少是ver12。首先，克隆GitHub库：
 
 ```
 git clone https://github.com/squidfunk/mkdocs-material
 ```
 
-Next, all dependencies need to be installed, which is done with:
+接着，安装所有依赖：
 
 ```
 cd mkdocs-material
@@ -235,34 +204,31 @@ npm install
 
   [9]: https://nodejs.org
 
-### Development mode
+### 开发模式
 
-Start the Webpack watchdog with:
+启动Webpack的看门狗：
 
 ```
 npm start
 ```
 
-Then, in a second session, start the MkDocs server with:
+接着，等待几秒后，启动MkDocs预览服务：
 
 ```
 mkdocs serve
 ```
 
-Point your browser to [localhost:8000][10] and you should see this documentation
-in front of you.
+浏览器访问[localhost:8000][10]，查看预览效果。
 
-!!! warning "Automatically generated files"
+!!! warning "Automatically generated files 自动生成的文件"
 
-    Never make any changes in the `material` directory, as the contents of this
-    directory are automatically generated from the `src` directory and will be
-    overridden when the theme is built.
+    切勿在`material`目录中进行任何更改，因为该目录的内容是从`src`目录自动生成的，且在构建主题时会被覆盖。
 
   [10]: http://localhost:8000
 
-### Building the theme
+### 构建主题
 
-When you're finished making your changes, you can build the theme by invoking:
+完成更改后，使用以下命令来构建主题：
 
 ```
 npm run build
